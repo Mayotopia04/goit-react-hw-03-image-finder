@@ -37,7 +37,7 @@ export class App extends Component {
 
       //display an error message, if there is no match with the search 
       if (hits.length === 0) {
-        toast.error("Sorry, there are no images matching your search query. Please try again.");
+        toast.error(`Sorry, there are no images matching your search query. Please try again.`);
 
         return;
       }
@@ -50,7 +50,7 @@ export class App extends Component {
       //display a message if page is already at the end of data (12 = per_page based on API call)
       if (page * 12 >= totalHits) {
         this.setState({ isEnd: true});
-        toast("We're sorry, but you've reached the end of search results.");
+        toast(`We're sorry, but you've reached the end of search results.`);
       }
 
       //update the state with the new images
@@ -60,18 +60,18 @@ export class App extends Component {
     } catch {
       this.setState({ isError: true });
     } finally {
-      this.setState({ isLoading: false });
+      this.setState({ isLoading: true });
     }
   };
 
   handleSubmit = e => {
     e.preventDefault();
 
-    const { search} = this.state;
+    const { search } = this.state;
     const newSearch = e.target.search.value.trim().toLowerCase();
 
     if (newSearch !== search) {
-      this.setState({ search: newSearch, page: 1, images: [ ]});
+      this.setState({ search: newSearch, page: 1, images: [] });
     }
   };
 
@@ -92,7 +92,7 @@ export class App extends Component {
         {/*Render Button Component when there is at least a second page or more and it's not the end of page */}
         {images.length >= 1 && !isEnd && <Button onClick={this.handleClick}/>}
         {isLoading && <Loader/>}
-        {isError && toast.error("Oops, something went wrong! Reload this page!")}
+        {isError && toast.error(`Oops, something went wrong! Reload this page!`)}
 
         <Toaster position="top-right" reverseOrder={false} />
       </div>
