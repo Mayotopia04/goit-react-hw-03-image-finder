@@ -21,7 +21,7 @@ export class ImageGalleryItem extends Component {
     };
 
     handleCloseModal = () => {
-        this.setState({selectedImage: null });
+        this.setState({ selectedImage: null });
     };
 
     render() {
