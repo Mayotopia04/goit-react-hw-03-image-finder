@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const BASE_URL = "https://pixabay.com/api";
+export const BASE_URL = "https://pixabay.com/api/";
 const API_KEY = "40949285-b1cf37184329e1bc69caad7c2";
 
 export const getAPI = async (query, page) => {

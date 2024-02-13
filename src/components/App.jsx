@@ -45,12 +45,14 @@ export class App extends Component {
       //display a success message if it's the first page
       if (page === 1) {
         toast.success(`Hooray! We found ${totalHits} images!`);
+        // return; 
       }
 
       //display a message if page is already at the end of data (12 = per_page based on API call)
       if (page * 12 >= totalHits) {
         this.setState({ isEnd: true});
         toast(`We're sorry, but you've reached the end of search results.`);
+        return;
       }
 
       //update the state with the new images
@@ -60,7 +62,7 @@ export class App extends Component {
     } catch {
       this.setState({ isError: true });
     } finally {
-      this.setState({ isLoading: true });
+      this.setState({ isLoading: false });
     }
   };
 
